@@ -15,7 +15,7 @@ class FibonacciRpcClient(object):
 			no_ack=True
 		)
 
-	def call1(self, n):
+	def call(self, n):
 		self.response = None
 		self.corr_id = str(uuid.uuid4())
 		self.channel.basic_publish(
@@ -37,5 +37,5 @@ class FibonacciRpcClient(object):
 			self.response = body
 			
 fib = FibonacciRpcClient()
-response = fib.call1(30)
+response = fib.call(30)
 print "[.] Got result %d" % response
